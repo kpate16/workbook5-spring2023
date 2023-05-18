@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Images</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.classless.min.css" />
+</head>
+
+<body>
+    <main>
+        <label for="imageList">Images</label>
+        <select name="image" id="imageList">
+            <option value="">Select Image...</option>
+            <option value="images/dog.jpg">A cute dog</option>
+            <option value="images/cat.jpg">A cute cat</option>
+            <option value="images/lion.jpg">A cute lion</option>
+            <option value="images/peacock.jpg">A beautiful peacock</option>
+
+
+        </select>
+        <button id="display-button" onclick="display()">
+            Add Image
+        </button>
+        <button id="clear-button" onclick="removeAllImages()">
+            Clear Images
+        </button>
+        <div id="imagesDiv"></div>
+    </main>
+    <script>
+        function display() {
+            let imagElement = document.getElementById("imageList").value;
+            if (imagElement) {
+                var elem = document.createElement("img");
+                elem.setAttribute("src", imagElement);
+                elem.setAttribute("height", 300);
+                elem.setAttribute("width", 200);
+                document.getElementById("imagesDiv").appendChild(elem);
+            }
+        }
+        function removeAllImages() {
+            const images = document.querySelectorAll("#imagesDiv img");
+            images.forEach(img => {
+                img.remove();
+            });
+        }
+    </script>
+</body>
+
+
+</html>
